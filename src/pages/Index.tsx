@@ -1,25 +1,36 @@
+import React from 'react';
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import PillSections from "@/components/PillSections";
-import BlogPreview from "@/components/BlogPreview";
+import ServiceShowcase from "@/components/ServiceShowcase";
+import HowItWorks from "@/components/HowItWorks";
+import CaseStudies from "@/components/CaseStudies";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import ScrollProgress from "@/components/ScrollProgress";
 import SocialProofBanner from "@/components/SocialProofBanner";
+import Pricing from "@/components/Pricing";
 import LiveNotifications from "@/components/LiveNotifications";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
+      <ScrollProgress />
       <Nav />
       <Hero />
       <SocialProofBanner />
       <Features />
-      <PillSections />
-      <BlogPreview />
-      <Footer />
-      <FloatingWhatsApp />
+      <ServiceShowcase />
+      <HowItWorks />
+      <CaseStudies />
+      <Pricing />
+      <FAQ />
       <LiveNotifications />
+      <Footer />
+      <BackToTop />
+      <FloatingWhatsApp />
     </div>
   );
 };

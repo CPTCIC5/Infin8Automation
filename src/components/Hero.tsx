@@ -1,67 +1,77 @@
 import { Button } from "@/components/ui/button";
-import { ChartBarIncreasing, Star, ShoppingCart } from "lucide-react";
+import { ChartBarIncreasing, Star, ShoppingCart, Calendar, Info, Clock, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
+
+const stats = [
+  {
+    icon: <ChartBarIncreasing />,
+    number: "500+",
+    label: "Businesses Automated"
+  },
+  {
+    icon: <Clock />,
+    number: "72hrs",
+    label: "Setup Time"
+  },
+  {
+    icon: <MessageSquare />,
+    number: "1M+",
+    label: "Messages Handled"
+  },
+  {
+    icon: <Star />,
+    number: "98%",
+    label: "Client Satisfaction"
+  }
+];
 
 const Hero = () => {
   return (
-    <section className="pt-24 pb-12 bg-[rgb(254,255,250)] overflow-hidden">
+    <section className="pt-28 md:pt-32 pb-16 bg-gradient-to-b from-background to-background-secondary">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-[2.7rem] lg:text-[3.4rem] font-bold text-secondary mb-6 leading-tight"
+            className="text-3xl md:text-5xl font-bold text-secondary mb-6 leading-tight"
           >
-            Are Your <span className="text-[#1FB355]">WhatsApp</span> and Sales<br className="mb-1" />
-            Interactions Driving <span className="text-[#1FB355]">Profit</span>?
+            Automate Your Business <br/>
+            <span className="text-primary">Save Time, Grow Faster</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-[1.3rem] md:text-[1.4rem] text-gray-600 mb-8"
+            className="text-lg md:text-xl text-gray-600 mb-8"
           >
-          <span className="font-bold">AI Sales Genio</span> helps you create unlimited <span className="text-[#1FB355]">personalization promotions</span>, AI-powered <br></br> WhatsApp experiences that builds trust, delight customers and <span className="text-[#1FB355]">drive sales effortlessly</span>.
+            Affordable automation solutions for Florida businesses.<br/>
+            From WhatsApp to social media, we handle it all.
           </motion.p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4 animate-fade-up animation-delay-200">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button 
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white"
-              onClick={() => window.location.href = "https://outlook.office.com/bookwithme/user/8ef8abcb1a04480ab07f1f7165fbfd2f%40salesgenio.ai?anonymous&isanonymous=true"}
+              className="bg-primary hover:bg-primary/90 text-white shadow-soft"
+              onClick={() => window.location.href = "/contact"}
             >
-              <Star className="mr-2 h-5 w-5" />
-              Watch Demo
+              Schedule Free Consultation
             </Button>
-            <a href="https://app.salesgenio.ai/login">
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary/5"
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-5xl mx-auto">
+          {stats.map((stat, index) => (
+            <motion.div 
+              key={index}
+              className="bg-white rounded-xl p-6 shadow-soft"
+              whileHover={{ y: -5 }}
             >
-              <ShoppingCart className="mr-2 h-5 w-5" />
-              Free Trial
-            </Button>
-            </a>
-          </div>
-          <div className="flex justify-center gap-8 pt-8 animate-fade-up animation-delay-300">
-            <div className="text-center">
-              <ChartBarIncreasing className="h-8 w-8 text-primary mx-auto mb-2" />
-              <p className="font-bold text-2xl text-secondary mb-1">30%</p>
-              <p className="text-sm text-gray-600">Increase Sales</p>
-            </div>
-            <div className="text-center">
-              <img src="wp-img2.png" alt="WhatsApp" className="h-8 w-8 mx-auto mb-2" />
-              <p className="font-bold text-2xl text-secondary mb-1">24/7</p>
-              <p className="text-sm text-gray-600">WhatsApp Integration</p>
-            </div>
-            <div className="text-center">
-              <Star className="h-8 w-8 text-primary mx-auto mb-2" />
-              <p className="font-bold text-2xl text-secondary mb-1">90%</p>
-              <p className="text-sm text-gray-600">Customer Success</p>
-            </div>
-          </div>
+              <div className="text-primary mb-2">{stat.icon}</div>
+              <p className="text-2xl font-bold text-secondary">{stat.number}</p>
+              <p className="text-sm text-gray-600">{stat.label}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

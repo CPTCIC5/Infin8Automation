@@ -1,17 +1,17 @@
-import { Facebook, Linkedin, MessageSquare, Share2 } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const footerLinks = [
+  const companyLinks = [
     { 
-      name: "Contact Us", 
-      href: "https://api.whatsapp.com/send/?phone=573102569107&text&type=phone_number&app_absent=0",
-      isExternal: true 
+      name: "About Us",
+      href: "/#about",
+      isExternal: false 
     },
     { 
-      name: "FAQ", 
-      href: "#",
-      isExternal: true 
+      name: "Contact",
+      href: "/contact",
+      isExternal: false 
     },
     { 
       name: "Privacy Policy", 
@@ -25,77 +25,146 @@ const Footer = () => {
     }
   ];
 
+  const serviceLinks = [
+    {
+      name: "WhatsApp Automation",
+      href: "/#services"
+    },
+    {
+      name: "Social Media Management",
+      href: "/#services"
+    },
+    {
+      name: "QR Code Campaigns",
+      href: "/#services"
+    },
+    {
+      name: "Business Analytics",
+      href: "/#services"
+    }
+  ];
+
   const socialLinks = [
     { 
-      icon: MessageSquare, 
-      href: "https://wa.me/573102569107",
+      icon: MessageSquare,
+      href: "https://wa.me/+1234567890",
       label: "WhatsApp"
     },
     {
-      icon: Linkedin,
-      href: "https://www.linkedin.com/company/104763514/admin/dashboard/",
-      label: "LinkedIn"
+      icon: Instagram,
+      href: "https://instagram.com/infin8automation",
+      label: "Instagram"
     },
     {
       icon: Facebook,
-      href: "https://www.facebook.com/profile.php?id=61567322537325",
+      href: "https://facebook.com/infin8automation",
       label: "Facebook"
     },
     {
-      icon: Share2,
-      href: "https://www.reddit.com/r/AISalesGenio/",
-      label: "Reddit"
+      icon: Linkedin,
+      href: "https://linkedin.com/company/infin8automation",
+      label: "LinkedIn"
     }
   ];
 
   return (
-    <footer className="bg-white/90 backdrop-blur-sm py-12">
-      <div className="container mx-auto px-4">
+    <footer className="bg-white/90 backdrop-blur-sm border-t">
+      <div className="container mx-auto px-4 py-12">
+        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {footerLinks.map((link, index) => (
-            link.isExternal ? (
-              <a
-                key={index}
-                href={link.href}
-                className="text-gray-600 hover:text-whatsapp transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.name}
-              </a>
-            ) : (
-              <Link
-                key={index}
-                to={link.href}
-                className="text-gray-600 hover:text-whatsapp transition-colors"
-              >
-                {link.name}
-              </Link>
-            )
-          ))}
+          {/* Brand Section */}
+          <div>
+            <img src="/logo-2.png" alt="INFIN8" className="h-8 w-auto mb-4" />
+            <p className="text-gray-600 mb-4">
+              Empowering Florida businesses with intelligent automation solutions.
+            </p>
+            <div className="flex space-x-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className="text-gray-400 hover:text-primary transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h3 className="font-semibold text-secondary mb-4">Company</h3>
+            <ul className="space-y-3">
+              {companyLinks.map((link, index) => (
+                <li key={index}>
+                  {link.isExternal ? (
+                    <a
+                      href={link.href}
+                      className="text-gray-600 hover:text-primary transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-gray-600 hover:text-primary transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="font-semibold text-secondary mb-4">Services</h3>
+            <ul className="space-y-3">
+              {serviceLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    to={link.href}
+                    className="text-gray-600 hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="font-semibold text-secondary mb-4">Contact</h3>
+            <div className="space-y-3">
+              <p className="text-gray-600">
+                <span className="block font-medium">Email:</span>
+                support@infin8automation.com
+              </p>
+              <p className="text-gray-600">
+                <span className="block font-medium">Hours:</span>
+                Mon - Fri: 9:00 AM - 6:00 PM EST
+              </p>
+              <p className="text-gray-600">
+                <span className="block font-medium">Location:</span>
+                Florida, United States
+              </p>
+            </div>
+          </div>
         </div>
-        
-        <div className="flex justify-center space-x-6">
-          {socialLinks.map((social, index) => {
-            const Icon = social.icon;
-            return (
-              <a
-                key={index}
-                href={social.href}
-                className="text-gray-600 hover:text-whatsapp transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-              >
-                <Icon className="w-6 h-6" />
-              </a>
-            );
-          })}
+
+        {/* Copyright */}
+        <div className="pt-8 border-t">
+          <p className="text-center text-gray-600">
+            © {new Date().getFullYear()} INFIN8 Automation. All rights reserved.
+          </p>
         </div>
-        
-        <p className="text-center text-gray-600 mt-8">
-          © 2024 AI Sales Genio. All rights reserved.
-        </p>
       </div>
     </footer>
   );

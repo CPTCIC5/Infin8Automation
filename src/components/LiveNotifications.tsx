@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const notifications = [
-  "Sarah just started using AI Sales Genio 🎉",
-  "New customer from Spain joined 🌍",
-  "50+ messages handled automatically today ⚡",
-  "Customer satisfaction rate: 98% today 🌟"
-];
-
 const LiveNotifications = () => {
-  const [showNotification, setShowNotification] = useState(false);
-  const [currentNotification, setCurrentNotification] = useState(0);
+  const [notification, setNotification] = useState<string | null>(null);
 
   useEffect(() => {
+    const notifications = [
+      "Someone just automated their WhatsApp",
+      "A business saved 15 hours this week",
+      "New social media automation setup"
+    ];
+
+    const showNotification = () => {
+      const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];
+      setNotification(randomNotification);
+      setTimeout(() => setNotification(null), 3000);
+    };
+
     const interval = setInterval(() => {
-      setShowNotification(true);
-      setTimeout(() => {
-        setShowNotification(false);
-        setCurrentNotification((prev) => (prev + 1) % notifications.length);
-      }, 4000);
+      if (Math.random() > 0.7) { // 30% chance to show notification
+        showNotification();
+      }
     }, 10000);
 
     return () => clearInterval(interval);
@@ -26,16 +28,14 @@ const LiveNotifications = () => {
 
   return (
     <AnimatePresence>
-      {showNotification && (
+      {notification && (
         <motion.div
-          initial={{ x: 300, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: 300, opacity: 0 }}
-          className="fixed top-24 right-4 bg-white shadow-lg rounded-lg p-4 z-50 max-w-sm"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
+          className="fixed bottom-4 left-4 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-soft max-w-xs"
         >
-          <p className="text-sm text-gray-800">
-            {notifications[currentNotification]}
-          </p>
+          <p className="text-sm text-gray-600">{notification}</p>
         </motion.div>
       )}
     </AnimatePresence>

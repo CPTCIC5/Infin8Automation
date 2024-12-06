@@ -1,6 +1,7 @@
 import { MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import MobileMenu from "./MobileMenu";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -19,7 +20,6 @@ const Nav = () => {
         }
       }, 100);
     } else {
-      // If no sectionId is provided, scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -30,12 +30,12 @@ const Nav = () => {
         {/* Left Section: Logo */}
         <div className="flex items-center gap-4">
           <a onClick={() => handleNavigation('/')} style={{ cursor: 'pointer' }}>
-            <img src="logo-2.png" alt="AI Sales Genio" className="h-16 w-auto"/>
+            <img src="logo-2.png" alt="INFIN8 Automation" className="h-12 md:h-16 w-auto"/>
           </a>
-          <span className="text-xl font-bold text-secondary">AI Sales Genio</span>
+          <span className="text-lg md:text-xl font-bold text-secondary">INFIN8</span>
         </div>
         {/* Right Section: Navigation Buttons */}
-        <div className="flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-6">
           <Button 
             variant="ghost" 
             className="text-secondary"
@@ -58,26 +58,15 @@ const Nav = () => {
             Blog
           </Button>
           <Button 
-            variant="ghost" 
-            className="text-secondary"
-            onClick={() => handleNavigation('/refer-us')}
+            className="bg-primary hover:bg-primary/90 text-white"
+            onClick={() => window.location.href = "/contact"}
           >
-            Refer Us
+            <MessageSquare className="mr-2 h-4 w-4" />
+            Get Started
           </Button>
-          <Button 
-            variant="ghost" 
-            className="text-secondary"
-            onClick={() => handleNavigation('/about', 'team')}
-          >
-            About
-          </Button>
-          <a href="https://outlook.office.com/bookwithme/user/8ef8abcb1a04480ab07f1f7165fbfd2f%40salesgenio.ai?anonymous&isanonymous=true">
-            <Button className="bg-primary hover:bg-primary/90 text-secondary">
-              <MessageSquare className="mr-2 h-4 w-4" />
-              Get Demo
-            </Button>
-          </a>
         </div>
+        {/* Mobile Menu */}
+        <MobileMenu />
       </div>
     </nav>
   );

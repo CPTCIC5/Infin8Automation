@@ -4,21 +4,21 @@ import { Button } from "@/components/ui/button";
 const BlogPreview = () => {
   const posts = [
     {
-      title: "How AI is Revolutionizing WhatsApp Business",
-      excerpt: "Discover how AI-powered conversations are transforming customer service and sales...",
-      image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2070",
+      title: "Automating Your Business: A Complete Guide",
+      excerpt: "Learn how to streamline your operations with WhatsApp and social media automation...",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978",
       date: "March 2024"
     },
     {
-      title: "10 Ways to Boost Sales with AI Sales Genio",
-      excerpt: "Learn the proven strategies our most successful clients use to increase revenue...",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80",
+      title: "QR Codes: Bridging Physical and Digital",
+      excerpt: "How businesses are using QR codes to enhance customer experience...",
+      image: "https://images.unsplash.com/photo-1622151834677-70f982c9adef",
       date: "March 2024"
     },
     {
-      title: "The Future of Customer Service",
-      excerpt: "See how AI and human agents work together to deliver exceptional experiences...",
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80",
+      title: "Social Media Automation Success Stories",
+      excerpt: "See how businesses are saving 10+ hours weekly with automated posting...",
+      image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf",
       date: "March 2024"
     }
   ];

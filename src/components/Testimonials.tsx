@@ -2,32 +2,32 @@ import { Card } from "@/components/ui/card";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "E-commerce Shopify Store Owner",
-    text: "Since integrating AI Sales Genio with my Shopify store, our sales have grown 200%. The AI handles product inquiries 24/7, recommends items based on customer preferences, and our conversion rate has doubled. It's like having a full sales team working round the clock!",
+    name: "Jill",
+    role: "Owner, South Florida Escapes",
+    text: "INFIN8 Automation transformed our social media workflow. Now, all I do is take photos and record a voice memo! The automation handles everything else perfectly.",
     image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
-    type: "E-commerce"
+    type: "Social Media Automation"
   },
   {
-    name: "David Wilson",
-    role: "Wine Store Owner",
-    text: "The Product Mastery Agent makes it easy for customers to find their perfect wine. Our customer retention has improved significantly.",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
-    type: "Complex Catalog"
+    name: "Todd",
+    role: "Owner, Rain Tech Seamless Gutters",
+    text: "Customer follow-ups are completely automated. We never miss a lead! The WhatsApp integration has made our communication so much more efficient.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+    type: "Lead Management"
   },
   {
-    name: "Michael Chen",
-    role: "SMB Manufacturing Owner",
-    text: "Finally, enterprise-level AI capabilities at a price point that makes sense for my business. Our customer engagement has never been better.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-    type: "Manufacturer"
+    name: "Maria",
+    role: "Manager, Boutique Salon Chain",
+    text: "The appointment scheduling automation has been a game-changer. Our staff can focus on clients instead of managing bookings.",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956",
+    type: "Appointment Automation"
   },
   {
-    name: "Isabella Martinez",
-    role: "Hotel Events Manager",
-    text: "The AI-driven promotions have revolutionized how we engage with guests. Our event bookings have increased by 150%!",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-    type: "Hospitality"
+    name: "James",
+    role: "Restaurant Group Director",
+    text: "Their social media automation has helped us maintain consistent posting across all our locations. The QR code integration for menus is brilliant!",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
+    type: "Multi-location Management"
   },
 ];
 

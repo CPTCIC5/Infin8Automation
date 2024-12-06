@@ -1,8 +1,8 @@
 const stats = [
-  { number: "30%", label: "Increase in Sales" },
-  { number: "50%", label: "More Engagement" },
-  { number: "24/7", label: "Customer Support" },
-  { number: "90%", label: "Customer Satisfaction" }
+  { number: "500+", label: "Businesses Automated" },
+  { number: "1M+", label: "Messages Handled Monthly" },
+  { number: "24/7", label: "Automated Support" },
+  { number: "98%", label: "Client Satisfaction" }
 ];
 
 const Stats = () => {

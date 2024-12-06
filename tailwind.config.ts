@@ -22,17 +22,23 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: {
+          DEFAULT: "#FAFBFF",
+          secondary: "#F8FAFC",
+        },
         primary: {
-          DEFAULT: "#1FB355",
-          light: "#BDEAA8",
-          dark: "#0F7468",
+          DEFAULT: "#4F46E5",
+          light: "#EEF2FF",
+          dark: "#4338CA",
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#0A323C",
+          DEFAULT: "#1E293B",
           foreground: "#ffffff",
+        },
+        accent: {
+          DEFAULT: "#F59E0B",
+          light: "#FEF3C7",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -42,10 +48,6 @@ export default {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -54,6 +56,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      boxShadow: {
+        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.05), 0 10px 20px -2px rgba(0, 0, 0, 0.02)',
       },
       keyframes: {
         "fade-up": {

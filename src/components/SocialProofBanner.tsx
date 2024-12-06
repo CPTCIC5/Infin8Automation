@@ -9,10 +9,26 @@ const SocialProofBanner = () => {
   });
 
   const brands = [
-    { name: "Meta", logo: "meta-logo-12362.svg", className: "h-24 md:h-28" },
-    { name: "Shopify", logo: "https://cdn.worldvectorlogo.com/logos/shopify.svg" },
-    { name: "Microsoft", logo: "microsoft-logo-svgrepo-com.svg", className: "h-24 md:h-28" },
-    { name: "OpenAI", logo: "openai-2.svg", className: "h-20 md:h-20" }
+    { 
+      name: "WhatsApp Business", 
+      logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+      className: "h-12 md:h-16" 
+    },
+    { 
+      name: "Instagram", 
+      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",
+      className: "h-12 md:h-16" 
+    },
+    { 
+      name: "Facebook", 
+      logo: "https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png",
+      className: "h-10 md:h-14" 
+    },
+    { 
+      name: "Google Business", 
+      logo: "https://upload.wikimedia.org/wikipedia/commons/3/38/Google_My_Business_Logo.svg",
+      className: "h-12 md:h-16" 
+    }
   ];
 
   return (
@@ -23,7 +39,7 @@ const SocialProofBanner = () => {
       className="py-8 bg-gray-50 border-y border-gray-200"
     >
       <div className="container mx-auto px-4">
-        <p className="text-center text-gray-600 mb-6">Trusted Partners of</p>
+        <p className="text-center text-gray-600 mb-6">Integrated With Leading Platforms</p>
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
           {brands.map((brand, index) => (
             <motion.img
