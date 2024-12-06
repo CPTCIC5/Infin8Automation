@@ -13,6 +13,9 @@ import ScrollProgress from "@/components/ScrollProgress";
 import SocialProofBanner from "@/components/SocialProofBanner";
 import Pricing from "@/components/Pricing";
 import LiveNotifications from "@/components/LiveNotifications";
+import PillSections from "@/components/PillSections";
+import Testimonials from "@/components/Testimonials";
+import BlogPreview from "@/components/BlogPreview";
 
 const Index = () => {
   return (
@@ -24,13 +27,16 @@ const Index = () => {
       <Features />
       <ServiceShowcase />
       <HowItWorks />
+      <PillSections />
       <CaseStudies />
+      <Testimonials />
       <Pricing />
+      <BlogPreview />
       <FAQ />
-      <LiveNotifications />
       <Footer />
       <BackToTop />
       <FloatingWhatsApp />
+      <LiveNotifications />
     </div>
   );
 };
