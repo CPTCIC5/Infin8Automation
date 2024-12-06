@@ -1,75 +1,68 @@
-import { Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 const faqs = [
   {
-    question: "How quickly can you set up the automation?",
-    answer: "Most systems are set up within 72 hours. After our initial consultation, we customize and implement your automation solutions, ensuring everything is working perfectly before handover."
+    question: "How quickly can you set up automation?",
+    answer: "Most systems are live within 72 hours. We handle all setup and customization."
   },
   {
     question: "What's included in the monthly fee?",
-    answer: "Your monthly fee includes system maintenance, regular updates, technical support, and ongoing optimization of your automation workflows. We ensure your systems run smoothly 24/7."
+    answer: "System maintenance, updates, technical support, and workflow optimization."
   },
   {
-    question: "Can I customize the automation workflows?",
-    answer: "Yes! We build custom workflows tailored to your business needs. Whether it's specific WhatsApp responses, social media posting schedules, or QR code campaigns, everything is customizable."
+    question: "Do I need technical knowledge?",
+    answer: "No technical knowledge needed. We handle all technical aspects for you."
   },
   {
-    question: "Do you offer multi-location support?",
-    answer: "Yes, our Enterprise plan includes multi-location support. We can help manage automation across different locations while maintaining consistent branding and messaging."
+    question: "Can I customize the workflows?",
+    answer: "Yes! Everything is customized to match your exact business needs."
+  },
+  {
+    question: "What support do you provide?",
+    answer: "24/7 monitoring and business-hours support via WhatsApp, email, and phone."
   }
 ];
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
-    <section className="py-12 md:py-16 bg-gray-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-3 md:mb-4">Common Questions</h2>
-          <p className="text-gray-600 text-sm md:text-base">Everything you need to know about our automation services</p>
-        </div>
+        <h2 className="text-3xl font-bold text-center text-secondary mb-12">
+          Common Questions
+        </h2>
 
-        <div className="max-w-3xl mx-auto space-y-3 md:space-y-4">
+        <div className="max-w-2xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="mb-4"
+              className="bg-white rounded-lg shadow-soft overflow-hidden"
             >
-              <motion.button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-4 md:p-5 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+                className="w-full p-4 text-left flex justify-between items-center"
               >
-                <span className="font-semibold text-left text-sm md:text-base">{faq.question}</span>
+                <span className="font-medium">{faq.question}</span>
                 <motion.div
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
                 >
-                  {openIndex === index ? (
-                    <Minus className="h-5 w-5 text-primary" />
-                  ) : (
-                    <Plus className="h-5 w-5 text-primary" />
-                  )}
+                  <ChevronDown className="h-5 w-5 text-gray-500" />
                 </motion.div>
-              </motion.button>
+              </button>
+
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    initial={{ height: 0 }}
+                    animate={{ height: "auto" }}
+                    exit={{ height: 0 }}
                     className="overflow-hidden"
                   >
-                    <div className="p-4 bg-white/50 rounded-b-lg">
-                      <p className="text-gray-600">{faq.answer}</p>
+                    <div className="p-4 pt-0 text-gray-600">
+                      {faq.answer}
                     </div>
                   </motion.div>
                 )}

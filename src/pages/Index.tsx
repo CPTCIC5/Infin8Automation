@@ -13,9 +13,9 @@ import ScrollProgress from "@/components/ScrollProgress";
 import SocialProofBanner from "@/components/SocialProofBanner";
 import Pricing from "@/components/Pricing";
 import LiveNotifications from "@/components/LiveNotifications";
-import PillSections from "@/components/PillSections";
 import Testimonials from "@/components/Testimonials";
 import BlogPreview from "@/components/BlogPreview";
+import PillSections from "@/components/PillSections";
 
 const Index = () => {
   return (
