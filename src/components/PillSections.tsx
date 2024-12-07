@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Play, Calendar, Database, BarChart, Building2, ShoppingBag, Store } from "lucide-react";
+import { MessageSquare, Play, Calendar, Database, BarChart, Building2, ShoppingBag, Store, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -21,257 +21,147 @@ const testimonials = [
 ];
 
 const PillSections = () => {
-  // Create separate refs for each section that needs animation
-  const [section1Ref, section1InView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [section2Ref, section2InView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [section4Ref, section4InView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [section5Ref, section5InView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [section2Ref, section2InView] = useInView({ threshold: 0.2 });
+  const [section4Ref, section4InView] = useInView({ threshold: 0.2 });
 
   return (
     <div className="w-full">
-      {/* Section 1: Problem Identification */}
-      <section className="py-16 bg-white">
+      {/* Section 1: Solutions Showcase */}
+      <section className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="container mx-auto px-4">
-          <motion.div
-            ref={section1Ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={section1InView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div className="space-y-6 animate-fade-up">
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary">
-                Your Customers Want More Than Products
-              </h2>
-              <p className="text-lg text-gray-600">
-                They want connection, answers, and experiences in WhatsApp that feel personal. 
-                But scaling that kind of service can feel impossible.
-              </p>
-              <div className="space-y-4">
-                <p className="text-gray-700">
-                  <span className="text-sm">❌</span> Struggling to respond to customers quickly enough?
-                </p>
-                <p className="text-gray-700">
-                  <span className="text-sm">❌</span> Losing sales because your team can't keep up?
-                </p>
-                <p className="text-gray-700">
-                  <span className="text-sm">❌</span> Worried competitors are delivering better experiences?
-                </p>
-              </div>
-              <p className="text-lg font-medium text-secondary">
-                We understand how frustrating it is to feel like your brand isn't living up to its potential.
-              </p>
-            </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2070"
-                alt="Customer Service Challenge"
-                className="object-cover w-full h-full"
-              />
-            </div>
+          <motion.div className="text-center mb-24">
+            <h2 className="text-4xl md:text-6xl font-bold text-secondary leading-tight">
+              Revolutionize Your{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Business Operations
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 mt-8 max-w-3xl mx-auto leading-relaxed">
+              Harness the power of AI to transform your customer experience and streamline operations
+            </p>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Section 2: ASG as Guide */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            ref={section2Ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={section2InView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div className="order-2 md:order-1 relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80"
-                alt="AI Sales Genio Solution"
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="order-1 md:order-2 space-y-6 animate-fade-up">
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary">
-                Transform Your Customer Experience
-              </h2>
-              <p className="text-lg text-gray-600">
-                At AI Sales Genio (ASG), we believe growing your business shouldn't mean losing the personal touch that makes your brand special.
-              </p>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-lg">
-                    <MessageSquare className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-secondary">AI Instant Engagement</h3>
-                    <p className="text-gray-600">Responds instantly to every customer inquiry</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-lg">
-                    <Database className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-secondary">Smart CRM Integration</h3>
-                    <p className="text-gray-600">Personalizes conversations to reflect your brand</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-lg">
-                    <BarChart className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-secondary">WhatsApp Marketing</h3>
-                    <p className="text-gray-600">Drives more sales through tailored recommendations</p>
-                  </div>
-                </div>
-              </div>
-              <br></br>
-              <a href="https://api.whatsapp.com/send/?phone=573102569107">
-              <Button className="bg-primary hover:bg-primary/90 text-white">
-                <MessageSquare className="mr-2 h-4 w-4" />
-                Get Started Today
-              </Button>
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Section 3: Enhanced Testimonials */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-secondary mb-12">
-            Success Stories That Could Be Yours
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {testimonials.map((testimonial, index) => (
-              <div
+          <div className="grid md:grid-cols-3 gap-10 mb-24">
+            {[
+              {
+                icon: <MessageSquare className="w-12 h-12" />,
+                title: "24/7 Customer Support",
+                description: "AI-powered responses that understand context and deliver personalized solutions instantly"
+              },
+              {
+                icon: <Database className="w-12 h-12" />,
+                title: "Smart Integration",
+                description: "Seamlessly connects with your existing tools and enhances your current workflows"
+              },
+              {
+                icon: <BarChart className="w-12 h-12" />,
+                title: "Real-Time Analytics",
+                description: "Track performance, customer satisfaction, and ROI with detailed insights"
+              }
+            ].map((feature, index) => (
+              <motion.div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="group relative bg-white p-10 rounded-3xl shadow-soft hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h3 className="font-semibold text-lg">{testimonial.name}</h3>
-                    <p className="text-gray-600">{testimonial.role}</p>
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative">
+                  <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-5 rounded-2xl w-fit mb-8">
+                    {feature.icon}
                   </div>
+                  <h3 className="text-2xl font-bold text-secondary mb-4 tracking-tight">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-lg">{feature.description}</p>
                 </div>
-                <p className="text-gray-700 italic">{testimonial.text}</p>
-                <p className="text-primary font-medium mt-4">{testimonial.impact}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-          <div className="bg-gray-50 p-6 rounded-lg mt-8">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">
-              Without AI Sales Genio:
-            </h3>
-            <ul className="space-y-2 text-gray-600">
-              <li>• Customers could turn to competitors for faster, better service</li>
-              <li>• Valuable sales opportunities might be lost</li>
-              <li>• Your brand risks blending in instead of standing out</li>
-            </ul>
-          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-r from-secondary to-primary p-[1px] rounded-3xl"
+          >
+            <div className="bg-white rounded-3xl p-16">
+              <div className="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                  <h3 className="text-4xl font-bold text-secondary mb-8 leading-tight">
+                    Ready to Transform Your Business?
+                  </h3>
+                  <div className="space-y-6">
+                    {[
+                      "Automate customer interactions",
+                      "Increase sales conversion",
+                      "Reduce operational costs"
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center gap-4">
+                        <div className="w-3 h-3 rounded-full bg-primary"></div>
+                        <p className="text-gray-600 text-lg">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-12 flex flex-col sm:flex-row gap-6">
+                    <Button 
+                      className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 rounded-xl"
+                      onClick={() => window.location.href = "/contact"}
+                    >
+                      Get Started
+                    </Button>
+                    <Button 
+                      variant="outline"
+                      className="border-primary text-primary hover:bg-primary/5 text-lg px-8 py-6 rounded-xl"
+                      onClick={() => window.location.href = "/demo"}
+                    >
+                      Watch Demo
+                    </Button>
+                  </div>
+                </div>
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-3xl blur-xl opacity-30"></div>
+                  <img
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070"
+                    alt="Business Innovation"
+                    className="rounded-2xl shadow-2xl relative z-10 w-full h-[500px] object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Section 4: Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-secondary/95 to-secondary">
+      {/* Call to Action Section */}
+      <section className="py-24 bg-gradient-to-br from-secondary via-secondary/95 to-secondary relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
         <div className="container mx-auto px-4">
           <motion.div
             ref={section4Ref}
             initial={{ opacity: 0, y: 50 }}
             animate={section4InView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="max-w-5xl mx-auto text-center text-white"
           >
-            <div className="text-white space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Take Control of Your Customer Experience Today
-              </h2>
-              <p className="text-lg opacity-90">
-                Join businesses that are transforming their customer relationships with AI-powered conversations.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto"
-                  onClick={() => window.location.href = "https://outlook.office.com/bookwithme/user/8ef8abcb1a04480ab07f1f7165fbfd2f%40salesgenio.ai?anonymous&isanonymous=true"}
-                >
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Schedule Free Demo
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="bg-white/10 hover:bg-white/20 text-white border-white/20 w-full sm:w-auto" 
-                  onClick={() => window.location.href = "https://youtu.be/s6oPfaLTKeM"}
-                >
-                  <Play className="mr-2 h-4 w-4" />
-                  Watch How It Works
-                </Button>
-              </div>
-            </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80"
-                alt="Customer Success"
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Section 5: Close with Confidence */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            ref={section5Ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={section5InView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80"
-                alt="Business Trust"
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="space-y-6 animate-fade-up">
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary">
-                Trusted by Industry Leaders
-              </h2>
-              <p className="text-lg text-gray-600">
-                ASG is already trusted by businesses in luxury hotels, international e-commerce, and more. From increasing customer satisfaction to boosting revenue, we're here to help you succeed.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Building2 className="w-6 h-6 text-primary" />
-                  <span className="text-gray-700">Luxury Hotels & Hospitality</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <ShoppingBag className="w-6 h-6 text-primary" />
-                  <span className="text-gray-700">International E-commerce</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Store className="w-6 h-6 text-primary" />
-                  <span className="text-gray-700">Retail & Consumer Goods</span>
-                </div>
-              </div>
-              <p className="text-lg font-medium text-secondary">
-                Your customers deserve an experience they'll remember. Your business deserves tools that make it thrive. Let ASG guide you to both.
-              </p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8">
+              Experience the Future of Business
+            </h2>
+            <p className="text-xl opacity-90 mb-12 max-w-3xl mx-auto">
+              Join forward-thinking businesses leveraging AI to deliver exceptional customer experiences
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Button 
-                className="bg-primary hover:bg-primary/90 text-white"
-                onClick={() => window.location.href = "https://outlook.office.com/bookwithme/user/8ef8abcb1a04480ab07f1f7165fbfd2f%40salesgenio.ai?anonymous&isanonymous=true"}
+                className="bg-white hover:bg-white/90 text-secondary text-lg px-8 py-6 rounded-xl"
+                onClick={() => window.location.href = "/contact"}
               >
-                <MessageSquare className="mr-2 h-4 w-4" />
-                Start Your Journey
+                Schedule Demo
+              </Button>
+              <Button 
+                variant="outline"
+                className="bg-white hover:bg-white/90 text-secondary text-lg px-8 py-6 rounded-xl"
+                onClick={() => window.location.href = "/contact"}
+              >
+                <Play className="mr-2 h-5 w-5" />
+                Watch Video
               </Button>
             </div>
           </motion.div>
