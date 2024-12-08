@@ -30,7 +30,7 @@ const Nav = () => {
         {/* Left Section: Logo */}
         <div className="flex items-center gap-4">
           <a onClick={() => handleNavigation('/')} style={{ cursor: 'pointer' }}>
-            <img src="logo-2.png" alt="INFIN8 Automation" className="h-12 md:h-16 w-auto"/>
+            <img src="/logo/infin8.jpg" alt="INFIN8 Automation" className="h-12 md:h-16 w-auto"/>
           </a>
           <span className="text-lg md:text-xl font-bold text-secondary">INFIN8</span>
         </div>
