@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { MessageSquare, Mail, Phone, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
+import { sendEmail } from "@/utils/emailjs";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
@@ -30,8 +31,16 @@ const Contact = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await sendEmail({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        businessName: data.businessName,
+        phone: data.phone,
+        service: data.service,
+        message: data.message,
+        to_email: 'soulpiyush09@gmail.com' // Keep your notification email
+      });
       
       toast({
         title: "Message sent successfully!",
