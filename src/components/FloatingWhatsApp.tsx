@@ -18,7 +18,7 @@ const FloatingWhatsApp = () => {
       className="fixed bottom-8 right-8 z-50"
     >
       <a
-        href="https://api.whatsapp.com/send/?phone="
+        href="https://api.whatsapp.com/send/?phone=13528053160"
         className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-shadow"
       >
         <MessageSquare className="h-5 w-5" />

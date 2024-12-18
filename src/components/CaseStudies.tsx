@@ -18,7 +18,7 @@ const caseStudies = [
   {
     title: "Rain Tech Seamless Gutters",
     category: "Lead Management",
-    image: "https://images.unsplash.com/photo-1518736346281-76db09f7c4e9",
+    image: "https://images.unsplash.com/photo-1717386255773-1e3037c81788?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     results: [
       "100% lead follow-up rate",
       "2-hour average response time",

@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import BookDemoButton from './BookDemoButton';
 
 const plans = [
   {
@@ -86,6 +87,9 @@ const Pricing = () => {
               </Button>
             </motion.div>
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <BookDemoButton className="mx-auto" />
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Calendar, ExternalLink } from "lucide-react";
+import BookDemoButton from './BookDemoButton';
 
 const Hero = () => {
   return (
@@ -32,13 +33,7 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Button 
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8"
-                onClick={() => window.location.href = "/contact"}
-              >
-                Schedule Free Consultation
-              </Button>
+              <BookDemoButton className="mr-4" />
               <Button 
                 size="lg"
                 variant="outline"

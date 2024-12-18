@@ -26,7 +26,7 @@ const SocialProofBanner = () => {
     },
     { 
       name: "Google Business", 
-      logo: "https://upload.wikimedia.org/wikipedia/commons/3/38/Google_My_Business_Logo.svg",
+      logo: "https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA",
       className: "h-12 md:h-16" 
     }
   ];

@@ -2,25 +2,27 @@ import { MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
+import BookDemoButton from './BookDemoButton';
 
 const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleNavigation = (path: string, sectionId?: string) => {
-    if (location.pathname !== path) {
+    if (path === '/') {
       navigate(path);
-    }
-    
-    if (sectionId) {
       setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+        if (sectionId) {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       }, 100);
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      navigate(path);
     }
   };
 
@@ -53,6 +55,13 @@ const Nav = () => {
           <Button 
             variant="ghost" 
             className="text-secondary"
+            onClick={() => handleNavigation('/about')}
+          >
+            About
+          </Button>
+          <Button 
+            variant="ghost" 
+            className="text-secondary"
             onClick={() => handleNavigation('/blog')}
           >
             Blog
@@ -64,6 +73,9 @@ const Nav = () => {
             <MessageSquare className="mr-2 h-4 w-4" />
             Get Started
           </Button>
+          <div className="hidden md:block">
+            <BookDemoButton />
+          </div>
         </div>
         {/* Mobile Menu */}
         <MobileMenu />
