@@ -1,6 +1,6 @@
 "use client"
 import { motion } from 'framer-motion';
-import { MessageSquare, Clock, TrendingUp } from 'lucide-react';
+import { MessageSquare, Clock, TrendingUp, Calendar } from 'lucide-react';
 
 const About = () => {
   return (
@@ -35,6 +35,26 @@ const About = () => {
               <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-2">Growth Focus</h3>
               <p className="text-gray-600">Convert more leads while doing less work</p>
+            </div>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="text-2xl font-bold text-secondary mb-8">Key Benefits</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="p-6 bg-primary/5 rounded-lg hover:shadow-md transition-shadow">
+                <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
+                <p className="text-gray-800 font-medium">Save Time with Automated Follow-Ups</p>
+              </div>
+
+              <div className="p-6 bg-primary/5 rounded-lg hover:shadow-md transition-shadow">
+                <MessageSquare className="w-12 h-12 text-primary mx-auto mb-4" />
+                <p className="text-gray-800 font-medium">Convert More Leads with Texting</p>
+              </div>
+
+              <div className="p-6 bg-primary/5 rounded-lg hover:shadow-md transition-shadow">
+                <Calendar className="w-12 h-12 text-primary mx-auto mb-4" />
+                <p className="text-gray-800 font-medium">Easily Book Appointments with Automation</p>
+              </div>
             </div>
           </div>
         </motion.div>

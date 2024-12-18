@@ -15,7 +15,6 @@ const services = [
       "Custom workflow automation",
       "Message templates & quick replies"
     ],
-    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da",
     price: "$399 setup + $199/month"
   },
   {
@@ -29,15 +28,11 @@ const services = [
       "Cross-platform posting",
       "Analytics & reporting"
     ],
-    image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf",
     price: "$499 setup + $199/month"
-  },
-  // Add other services...
+  }
 ];
 
 const ServiceShowcase = () => {
-  const [activeService, setActiveService] = useState(services[0]);
-
   return (
     <section className="py-20 bg-background-secondary">
       <div className="container mx-auto px-4">
@@ -46,7 +41,7 @@ const ServiceShowcase = () => {
           <p className="text-gray-600">Simple pricing, powerful features</p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {services.map((service) => (
             <motion.div
               key={service.id}
