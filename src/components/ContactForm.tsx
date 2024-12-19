@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { sendEmail } from "@/utils/emailjs";
+import { submitToGoogleSheets } from "@/utils/emailjs";
 import { useState } from "react";
 
 const ContactForm = () => {
@@ -18,12 +18,11 @@ const ContactForm = () => {
       name: (form.elements.namedItem('name') as HTMLInputElement).value,
       email: (form.elements.namedItem('email') as HTMLInputElement).value,
       company: (form.elements.namedItem('company') as HTMLInputElement).value,
-      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
-      to_email: 'soulpiyush09@gmail.com'
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value
     };
 
     try {
-      await sendEmail(formData);
+      await submitToGoogleSheets(formData);
       toast({
         title: "Thanks for your interest!",
         description: "We'll get back to you shortly.",

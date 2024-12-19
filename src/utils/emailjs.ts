@@ -1,19 +1,7 @@
-import emailjs from '@emailjs/browser';
+const GOOGLE_SCRIPT_URL = 'YOUR_DEPLOYMENT_URL'; // Replace with your actual Google Script URL
 
-// Initialize EmailJS with your public key
-emailjs.init("YOUR_PUBLIC_KEY");
-
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL'; // Replace with your actual Google Script URL
-
-export const sendEmail = async (formData: any) => {
+export const submitToGoogleSheets = async (formData: any) => {
   try {
-    // Send email via EmailJS
-    await emailjs.send(
-      'YOUR_SERVICE_ID',
-      'YOUR_TEMPLATE_ID',
-      formData
-    );
-
     // Format data for Google Sheets
     const sheetData = {
       timestamp: new Date().toISOString(),
@@ -26,15 +14,17 @@ export const sendEmail = async (formData: any) => {
       message: formData.message
     };
 
-    // Store in Google Sheets
-    await fetch(GOOGLE_SCRIPT_URL, {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(sheetData)
     });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
 
     return true;
   } catch (error) {

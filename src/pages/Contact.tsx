@@ -10,7 +10,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { MessageSquare, Mail, Phone, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
-import { sendEmail } from "@/utils/emailjs";
+import { submitToGoogleSheets } from "@/utils/emailjs";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
@@ -25,33 +27,37 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 const Contact = () => {
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(formSchema)
   });
 
   const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
     try {
-      await sendEmail({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        businessName: data.businessName,
-        phone: data.phone,
-        service: data.service,
-        message: data.message,
-        to_email: 'soulpiyush09@gmail.com' // Keep your notification email
-      });
+      await submitToGoogleSheets(data);
       
+      setShowSuccess(true);
       toast({
         title: "Message sent successfully!",
         description: "We'll get back to you within 24 hours.",
       });
+      
+      reset();
+      
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 2000);
+      
     } catch (error) {
       toast({
         title: "Error sending message",
         description: "Please try again later.",
         variant: "destructive"
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -71,108 +77,117 @@ const Contact = () => {
               <p className="text-gray-600 mb-8">
                 Ready to automate your business? Fill out the form below and we'll get back to you within 24 hours.
               </p>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Input
-                      placeholder="First Name"
-                      {...register("firstName")}
-                      className={errors.firstName ? "border-red-500" : ""}
-                    />
-                    {errors.firstName && (
-                      <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>
-                    )}
-                  </div>
-                  <div>
-                    <Input
-                      placeholder="Last Name"
-                      {...register("lastName")}
-                      className={errors.lastName ? "border-red-500" : ""}
-                    />
-                    {errors.lastName && (
-                      <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <Input
-                    type="email"
-                    placeholder="Business Email"
-                    {...register("email")}
-                    className={errors.email ? "border-red-500" : ""}
-                  />
-                  {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <Input
-                    placeholder="Business Name"
-                    {...register("businessName")}
-                    className={errors.businessName ? "border-red-500" : ""}
-                  />
-                  {errors.businessName && (
-                    <p className="text-red-500 text-sm mt-1">{errors.businessName.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <Input
-                    placeholder="Phone Number"
-                    {...register("phone")}
-                    className={errors.phone ? "border-red-500" : ""}
-                  />
-                  {errors.phone && (
-                    <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <select
-                    {...register("service")}
-                    className={`w-full p-3 rounded-md border ${
-                      errors.service ? "border-red-500" : "border-gray-200"
-                    }`}
-                  >
-                    <option value="">Select Service</option>
-                    <option value="whatsapp">WhatsApp Automation</option>
-                    <option value="social">Social Media Automation</option>
-                    <option value="qr">QR Code Campaigns</option>
-                    <option value="google">Google Business Profile</option>
-                  </select>
-                  {errors.service && (
-                    <p className="text-red-500 text-sm mt-1">{errors.service.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <Textarea
-                    placeholder="Tell us about your business needs"
-                    {...register("message")}
-                    className={errors.message ? "border-red-500" : ""}
-                  />
-                  {errors.message && (
-                    <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
-                  )}
-                </div>
-
-                <Button
-                  type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-white"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center">
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Sending...
+              <motion.div
+                animate={showSuccess ? { scale: [1, 1.02, 1] } : {}}
+                transition={{ duration: 0.5 }}
+              >
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Input
+                        placeholder="First Name"
+                        {...register("firstName")}
+                        className={cn(
+                          "w-full",
+                          errors.firstName ? "border-red-500 focus:ring-red-500" : "focus:ring-primary"
+                        )}
+                        disabled={isSubmitting}
+                      />
+                      {errors.firstName && (
+                        <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>
+                      )}
                     </div>
-                  ) : (
-                    "Submit Request"
-                  )}
-                </Button>
-              </form>
+                    <div>
+                      <Input
+                        placeholder="Last Name"
+                        {...register("lastName")}
+                        className={errors.lastName ? "border-red-500" : ""}
+                      />
+                      {errors.lastName && (
+                        <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <Input
+                      type="email"
+                      placeholder="Business Email"
+                      {...register("email")}
+                      className={errors.email ? "border-red-500" : ""}
+                    />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Input
+                      placeholder="Business Name"
+                      {...register("businessName")}
+                      className={errors.businessName ? "border-red-500" : ""}
+                    />
+                    {errors.businessName && (
+                      <p className="text-red-500 text-sm mt-1">{errors.businessName.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Input
+                      placeholder="Phone Number"
+                      {...register("phone")}
+                      className={errors.phone ? "border-red-500" : ""}
+                    />
+                    {errors.phone && (
+                      <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <select
+                      {...register("service")}
+                      className={`w-full p-3 rounded-md border ${
+                        errors.service ? "border-red-500" : "border-gray-200"
+                      }`}
+                    >
+                      <option value="">Select Service</option>
+                      <option value="whatsapp">WhatsApp Automation</option>
+                      <option value="social">Social Media Automation</option>
+                      <option value="qr">QR Code Campaigns</option>
+                      <option value="google">Google Business Profile</option>
+                    </select>
+                    {errors.service && (
+                      <p className="text-red-500 text-sm mt-1">{errors.service.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Textarea
+                      placeholder="Tell us about your business needs"
+                      {...register("message")}
+                      className={errors.message ? "border-red-500" : ""}
+                    />
+                    {errors.message && (
+                      <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+                    )}
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-primary hover:bg-primary/90 text-white"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center">
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </div>
+                    ) : (
+                      "Submit Request"
+                    )}
+                  </Button>
+                </form>
+              </motion.div>
             </motion.div>
 
             {/* Contact Info */}
